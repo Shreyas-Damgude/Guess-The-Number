@@ -26,26 +26,27 @@ function game() {
   const score = +dispScore.textContent;
 
   !guess && displayMessage('⛔ No number!');
+  if (!guess) return;
 
-  if (guess) {
-    if (guess === fixed) {
-      dispBody.style.backgroundColor = '#60b347';
-      const highscore = +dispHighscore.textContent;
-      displayMessage('🎉 Correct number!');
-      dispNumber.style.width = '30rem';
+  if (guess === fixed) {
+    dispBody.style.backgroundColor = '#60b347';
+    const highscore = +dispHighscore.textContent;
+    displayMessage('🎉 Correct number!');
+    dispNumber.style.width = '30rem';
+    dispNumber.textContent = fixed;
+    if (score > highscore) {
+      dispHighscore.textContent = score;
+    }
+  }
+
+  if (guess !== fixed) {
+    if (score > 1) {
+      displayMessage(guess > fixed ? '📈 Too high!' : '📉 Too low!');
+      dispScore.textContent = score - 1;
+    } else {
+      displayMessage('😐 You lost the game!');
+      dispScore.textContent = score - 1;
       dispNumber.textContent = fixed;
-      if (score > highscore) {
-        dispHighscore.textContent = score;
-      }
-    } else if (guess !== fixed) {
-      if (score > 1) {
-        displayMessage(guess > fixed ? '📈 Too high!' : '📉 Too low!');
-        dispScore.textContent = score - 1;
-      } else {
-        displayMessage('😐 You lost the game!');
-        dispScore.textContent = score - 1;
-        dispNumber.textContent = fixed;
-      }
     }
   }
 }
