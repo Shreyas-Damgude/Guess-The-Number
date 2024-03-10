@@ -101,7 +101,7 @@ h1 {
   color: #222;
   font-size: 2rem;
   font-family: inherit;
-  padding: 2rem 3rem;
+  padding: 15px;
   cursor: pointer;
 }
 
@@ -116,4 +116,32 @@ h1 {
 
 .label-score {
   margin-bottom: 2rem;
+}
+
+@media screen and (orientation: portrait) {
+  .h1 {
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  .left {
+    margin-top: 170px;
+  }
+
+  .right {
+    display: grid;
+  }
+
+  .message {
+    text-align: center;
+    margin: 2rem 0 !important;
+  }
+
+  .label-score,
+  .label-highscore {
+    text-align: center;
+    margin-bottom: 2rem 0 !important;
+  }
 }
